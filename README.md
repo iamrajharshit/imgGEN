@@ -6,7 +6,7 @@ To build and deploy a Deep Learning Model that generates new images of a specifi
 ## Requirements
 ### Dataset:
 The [dataset](https://www.kaggle.com/datasets/azmeenasiraj/cat-faces-data-set) used is sourced from the Cat Faces dataset obtained from [Kaggle](https://www.kaggle.com/datasets). This dataset 
-contains 29,843 coloured images of cat faces, each of dimension 64 x 64.
+contains 29,843 coloured images of cat faces, each of dimension `64 x 64`.
 
 ### Data Preprocessing
 Before training, the samples in the dataset have to be preprocessed to ensure uniformity in data 
