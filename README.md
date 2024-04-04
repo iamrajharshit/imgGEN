@@ -53,7 +53,7 @@ Additionally, data visualization of generated images can be enhanced in terms of
 <img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Image%20after%20loading.png" title="Image after loading" alt="Image after loading" width="200" height="200"/>&nbsp;
 
 ### Model Design and Model Training
-#### Model Architecture:
+#### GAN Model Architecture:
 ##### The Generator:
 - The Generator is part of the GAN that generates realistic-looking images.
 - These generated images should be similar to real images from the dataset used for training.
