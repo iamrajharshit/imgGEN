@@ -117,14 +117,13 @@ Here, we use the Adam optimizer with an initial `learning rate` of 0.001. Adam h
 
 ### Visual Inspection:
 These are samples of images generated after `100 epochs`. Clearly, the images are not realistic. 
-- However, most images have vague shapes of the cat faces. Some have well-defined shapes of the eyes, nose and mouth as well.Training with more number of epochs is required (1000 epochs).
-- More training with better parameter values and updated network design has to be done for improved image quality.
 #### Results:
 #### Generated Image after 100 Epoch:
 <img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Image%20generated%20after%20100%20epochs.%20Using%20CPU.png" title="Generated Image after 100 Epochs" alt="Generated Image after 100 Epochs" />&nbsp;
-  
 ##### Saving The Image after 100 Epochs
 <img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Saving%20the%20image%20after%20100%20Epochs.png" title="Image after 100 Epochs" alt="Image after 100 Epochs" />&nbsp;
+- However, most images have vague shapes of the cat faces. Some have well-defined shapes of the eyes, nose and mouth as well.Training with more number of epochs is required (1000 epochs).
+- More training with better parameter values and updated network design has to be done for improved image quality.
 
 ### Model Evaluation
 #### Frechet Inception Distance:
@@ -138,6 +137,13 @@ These are samples of images generated after `100 epochs`. Clearly, the images ar
 - Inception score analyses images based on both quality and diversity. It uses Kullback-Leibler distance to assess the Quality and entropy to assess the Diversity of generated images.
 - A higher value of inception score indicated better generation with a balance between quality and diversity in generation. However, an image with a good inception score value may not always be realistic in terms of human perception.
 (Yet to be calculated!)
+### Observations
+#### Loss Curve:
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Loss%20Over%20Time%20(Generator%20vs%20Discriminator)%20here%20we%20see%20our%20loss%20is%20high.png" title="Loss Over Time" alt="Loss Over Time " />&nbsp;
+- The generator loss is usually high in the beginning as you can see, we have done only 100 epochs here, therefore the loss is high through out he graph.
+- In next phase, will have around 1000 plus epochs and we expect to see gradually reduce in loss and the curve will stabilizes to a steady value as it learns to produce high-quality, realistic data over time. 
+- A well-trained generator can produce hyper-realistic images and fool the discriminator into thinking it is real.
+
 
 
 
