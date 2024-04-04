@@ -36,11 +36,8 @@ In this model, tanh activation is used for the most part.
 - Due to the availability of limited computational resources, having lower storage requirements facilitates faster and simplified processing.
 - Grayscale images are less prone to noise, unlike colour channels.
 Additionally, data visualization of generated images can be enhanced in terms of features such as shapes and textures.
-##### Sample Image from Dataset
-
-<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Sample%20Image%20from%20Dataset.png" title="Sample Image from Dataset" alt="Sample Image from Dataset" width="200" height="200"/>&nbsp;
-
-##### Image after Loading  
+##### Sample Image and Loaded image: 
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Sample%20Image%20from%20Dataset.png" title="Sample Image from Dataset" alt="Sample Image from Dataset" width="200" height="200"/>&nbsp; 
 <img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Image%20after%20loading.png" title="Image after loading" alt="Image after loading" width="200" height="200"/>&nbsp;
 
 ### Model Design and Model Training
