@@ -1,4 +1,136 @@
 # imgGEN using GAN model
+Design and Implement a Generative Adversarial Network (GAN) to generate new images
 ## Objective
 To build and deploy a Deep Learning Model that generates new images of a specific category
-– in this case, “CAT”, using a GAN model.
+– in this case we have, “CAT”, using a GAN model.
+## Requirements
+### Dataset:
+The [dataset](https://www.kaggle.com/datasets/azmeenasiraj/cat-faces-data-set) used is sourced from the Cat Faces dataset obtained from [Kaggle](https://www.kaggle.com/datasets). This dataset 
+contains 29,843 coloured images of cat faces, each of dimension 64 x 64.
+
+### Data Preprocessing
+Before training, the samples in the dataset have to be preprocessed to ensure uniformity in data 
+and improve the overall model performance.
+#### 1. Resizing:
+- Resizing the images to a specific resolution is beneficial as it ensures that the input 
+dimensions of all samples are uniform.
+Consistent input dimensions help the model 
+better understand the spatial information, scale, and hidden characteristics of the 
+samples – both individually and relatively with each other.
+- For this model, all the input samples have been resized to a 64 x 64 dimension with 3 
+colour channels (resizing has been done in the dataset itself).
+- The input shape of each sample is therefore: (64, 64, 3)
+#### 2. Normalization: 
+- Normalization is done to map the values of input samples to a specific range like [0,1] 
+or [-1, 1].
+- This is done to reduce bias and stabilize the training process.
+- The range to which normalization is done depends on the activation function used.
+In this model, tanh activation is used for the most part.
+- Therefore, the input has been mapped to the range [-1, 1].
+- This range ensures that the hyperbolic tangent can capture both positive and negative relationships in data, covering a broad spectrum and thereby 
+improving model performance. 
+#### 3. Data Augmentation:
+- Data Augmentation is commonly used for image processing tasks.
+- By performing various transformations such as flipping, rotating, zooming, and resizing to existing data, we can synthetically generate more data samples.
+- This improves the quality and diversity of data available for training.
+- Data augmentation is thus beneficial in preventing overfitting and also improving the quality of generation.
+- Due to computational resource limitations and a sufficiently large size of the training 
+dataset, it has been decided to not perform data augmentation for this model.
+#### 4. Change of Colour Space:
+- The `OpenCV` package has been used for all image manipulation tasks. 
+- By default, OpenCV reads images in the BGR format. The colour space of the input dataset has been converted from BGR to Grayscale.
+- Grayscale images have only one channel as opposed to the three channels (Red, Green, Blue) of the BGR format.
+- This conversion significantly reduces the data size and aids in efficient computation.
+- Due to the availability of limited computational resources, having lower storage 
+requirements facilitates faster and simplified processing.
+- Grayscale images are less prone to noise, unlike colour channels.
+Additionally, data visualization of generated images can be enhanced in terms of features such as shapes and textures.
+##### Sample Image from Dataset
+
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Sample%20Image%20from%20Dataset.png" title="Sample Image from Dataset" alt="Sample Image from Dataset" width="200" height="200"/>&nbsp;
+
+##### Image after Loading  
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Image%20after%20loading.png" title="Image after loading" alt="Image after loading" width="200" height="200"/>&nbsp;
+
+### Model Design and Model Training
+#### Model Architecture:
+##### The Generator:
+- The Generator is part of the GAN that generates realistic-looking images.
+- These generated images should be similar to real images from the dataset used for training.
+- In this case, our generator model should be able to generate images of cat faces.
+##### Training Objective:
+Over time, after training the generator should be able to generate data that 
+is indistinguishable from real data.
+- The generator model is first defined using the `Sequential()` model.
+- This acts as the backbone framework upon which all the other layers are built.
+Following this, a `Dense()` layer is defined with `256 x 8 x 8` number of input `neurons`.
+- This is the initial Dense layer unit which will be later upscaled to the dimension of the real image in the dataset.`256` represents the filter number, and `8 x 8` is the initial pixel dimension which will be upscaled to `64 x 64`, which is the required image dimension.
+- This Dense layer is then reshaped to `8 x 8 x 256` to prepare for the transposed convolution operations. Transposed convolution is the layer that upscales noise to the required output.
+- To perform transposed convolution, the input shape should be transposed from `256 x 8 x 8` to `8 x 8 x 256`.
+- `LeakyReLu` is an activation function and a variant of `ReLU` (Rectified Linear Units). `ReLU` maps output values to 0 (if input is negative) or x (if input is positive).
+- The disadvantage of this is it leads to the dying `ReLU` problem during backpropagation. If a large negative gradient is present, the output is mapped to 0, and therefore learning and updation do not take place during backpropagation because of the very low value of the gradient. `Leaky ReLU` on the other hand uses a small alpha value (0.1 be default) that is multiplied by negative input values. `LeakyReLU` therefore maps the output to alpha. x(negative) or x(positive), thus preventing the dying `ReLu` problem.
+- Similarly, the `tanh` (Hyperbolic tangent) activation function is used to map the input to the range [-1, 1]. This covers a broad spectrum and can capture both positive and negative relationships in data.
+- `BatchNormalization()` layer is used to stabilize the training process and prevent overfitting in the network.
+- The `Conv2DTranspose()` layer performs the Transposed Convolutional operation. This is the opposite of Regular convolution. Here, the input slides over the convolutional filter, followed by which the elementwise multiplication and addition are performed to upscale the image to the required dimensions. Here we perform up-sampling.
+- `kernel_size` indicates the dimensions of the convolutional filters. Here, we use `3 x 3`filters.
+- `strides` show the number of steps taken in each convolution operation. For transposed convolutional operation, strides also define the up-sampling factor.
+- We use `strides = 2 x 2`and`padding = 'same'` indicates that the input and output will be of the same dimension for `stride = 1 / 2`
+##### Generator Summary
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Generator%20Summary%20(model%20sequential).png" title="Generator Summary " alt="Generator Summary " />&nbsp;
+
+##### The Discriminator:
+The `Discriminator model` is the part of `GAN` that differentiates between real and generated 
+(fake) images. The discriminator is trained using both real images from the dataset as well as 
+fake images generated by the generator. It is a binary classifier which can predict whether the 
+input image is real or fake.
+##### Training Objective: 
+After sufficient training, the discriminator should be able to accurately 
+distinguish between real and fake images.
+The discriminator here resembles a regular Convolutional Neural Network (CNN).
+The `Conv2D()` layer performs the Convolutional operation. the convolution operation involves 
+sliding an `n` number of filters over the input image, followed by elementwise multiplication 
+and addition. This operation extracts import features and structures of the image. This hidden 
+information is used to train the model to understand the difference between real and fake 
+images.
+`Flatten()` layer breaks down the 2D image into a 1-dimensional vector to serve as input to the 
+fully connected layer
+The dense layer acts as the fully connected layer. The output of this layer is a binary value 0/1 
+which indicates whether the input is real or fake.
+The `Sigmoid` activation function maps the output between `0` and `1`. This is ideal for a binary 
+classification problem. 0 indicates that the input is a fake image generated by the discriminator 
+whereas 1 indicates the input is a real image from the dataset.
+Loss Functions are used to calculate the loss between actual and predicted output. The goal is 
+to minimize loss between actual and predicted output, thereby increasing classification 
+accuracy. This loss is backpropagated through the network to update the weights of the 
+network. The gradient of loss is a significant hyperparameter for training. Here, we 
+use `binary_crossentropy` to guide model training since the problem is a binary classification 
+task.
+Optimizers are used during compilation and training to improve the performance of the model. 
+Optimizers guide weight updation in the network during backpropagation to ensure the best 
+possible performance and faster convergence. Here, we use the Adam optimizer with an initial 
+`learning rate` of 0.001. Adam has an adaptive learning rate which is adjusted for each parameter based on the gradient values. This leads to accuracy in updation and faster convergence.
+##### Discriminator Summary
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Discriminator%20summary.png" title="Discriminator Summary" alt="Discriminator Summary" />&nbsp;
+##### GAN:
+- The GAN architecture is a combination of a `generator` and a `discriminator` network.
+- GANs are excellent generative models that are useful for several applications like text generation, and image generation.
+- The model architecture used is the Deep Convolutional GAN (DCGAN) architecture since the 
+task is image generation.
+- DCGAN is similar to GAN. However, both the generator and discriminator are designed as Convolutional Neural Networks (CNN) and their equivalents.
+- The use of CNN in GAN ensures the generation of realistic and high-quality images.
+- CNNs can effectively capture the spatial hierarchies in data and therefore learn to generate images with complex structures effectively.
+- GAN training is computationally very expensive.
+- GANS are also training intensive.
+- The higher the training, the better the quality of generation. GAN training also happens in an adversarial manner.
+- This means that the generator and discriminator compete during training.
+- The generator tries to produce images that are indistinguishable from real images whereas the discriminator tries to accurately differentiate between real and fake images.
+- The goal is to train the generator to produce an image that is so real that the discriminator is forced to classify it as real.
+#### GAN (Combined Generator and Discriminator) Summary
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Discriminator%20summary.png" title="GAN Summary" alt="GAN Summary" />&nbsp;
+
+
+
+
+
+
+
