@@ -9,40 +9,31 @@ The [dataset](https://www.kaggle.com/datasets/azmeenasiraj/cat-faces-data-set) u
 contains 29,843 coloured images of cat faces, each of dimension `64 x 64`.
 
 ### Data Preprocessing
-Before training, the samples in the dataset have to be preprocessed to ensure uniformity in data 
-and improve the overall model performance.
+Before training, the samples in the dataset have to be preprocessed to ensure uniformity in data and improve the overall model performance.
 #### 1. Resizing:
-- Resizing the images to a specific resolution is beneficial as it ensures that the input 
-dimensions of all samples are uniform.
-Consistent input dimensions help the model 
-better understand the spatial information, scale, and hidden characteristics of the 
-samples – both individually and relatively with each other.
-- For this model, all the input samples have been resized to a 64 x 64 dimension with 3 
-colour channels (resizing has been done in the dataset itself).
+- Resizing the images to a specific resolution is beneficial as it ensures that the input dimensions of all samples are uniform.
+- Consistent input dimensions help the model better understand the spatial information, scale, and hidden characteristics of the samples, both individually and relatively with each other.
+- For this model, all the input samples have been resized to a `64 x 64` dimension with `3 colour` channels (resizing has been done in the dataset itself).
 - The input shape of each sample is therefore: (64, 64, 3)
 #### 2. Normalization: 
-- Normalization is done to map the values of input samples to a specific range like [0,1] 
-or [-1, 1].
+- Normalization is done to map the values of input samples to a specific range like `[0,1]` or `[-1, 1]`.
 - This is done to reduce bias and stabilize the training process.
 - The range to which normalization is done depends on the activation function used.
 In this model, tanh activation is used for the most part.
-- Therefore, the input has been mapped to the range [-1, 1].
-- This range ensures that the hyperbolic tangent can capture both positive and negative relationships in data, covering a broad spectrum and thereby 
-improving model performance. 
+- Therefore, the `input` has been mapped to the `range [-1, 1]`.
+- This range ensures that the hyperbolic tangent can capture both positive and negative relationships in data, covering a broad spectrum and thereby improving model performance. 
 #### 3. Data Augmentation:
 - Data Augmentation is commonly used for image processing tasks.
-- By performing various transformations such as flipping, rotating, zooming, and resizing to existing data, we can synthetically generate more data samples.
+- By performing various transformations such as `flipping`, `rotating`, `zooming`, and `resizing` to existing data, we can synthetically generate more data samples.
 - This improves the quality and diversity of data available for training.
 - Data augmentation is thus beneficial in preventing overfitting and also improving the quality of generation.
-- Due to computational resource limitations and a sufficiently large size of the training 
-dataset, it has been decided to not perform data augmentation for this model.
+- Due to computational resource limitations and a sufficiently large size of the training dataset, it has been decided to not perform data augmentation for this model.
 #### 4. Change of Colour Space:
 - The `OpenCV` package has been used for all image manipulation tasks. 
 - By default, OpenCV reads images in the BGR format. The colour space of the input dataset has been converted from BGR to Grayscale.
 - Grayscale images have only one channel as opposed to the three channels (Red, Green, Blue) of the BGR format.
 - This conversion significantly reduces the data size and aids in efficient computation.
-- Due to the availability of limited computational resources, having lower storage 
-requirements facilitates faster and simplified processing.
+- Due to the availability of limited computational resources, having lower storage requirements facilitates faster and simplified processing.
 - Grayscale images are less prone to noise, unlike colour channels.
 Additionally, data visualization of generated images can be enhanced in terms of features such as shapes and textures.
 ##### Sample Image from Dataset
@@ -59,8 +50,7 @@ Additionally, data visualization of generated images can be enhanced in terms of
 - These generated images should be similar to real images from the dataset used for training.
 - In this case, our generator model should be able to generate images of cat faces.
 ##### Training Objective:
-Over time, after training the generator should be able to generate data that 
-is indistinguishable from real data.
+Over time, after training the generator should be able to generate data that is indistinguishable from real data.
 - The generator model is first defined using the `Sequential()` model.
 - This acts as the backbone framework upon which all the other layers are built.
 Following this, a `Dense()` layer is defined with `256 x 8 x 8` number of input `neurons`.
