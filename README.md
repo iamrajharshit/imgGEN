@@ -119,7 +119,11 @@ Here, we use the Adam optimizer with an initial `learning rate` of 0.001. Adam h
 These are samples of images generated after `100 epochs`. Clearly, the images are not realistic. 
 - However, most images have vague shapes of the cat faces. Some have well-defined shapes of the eyes, nose and mouth as well.Training with more number of epochs is required (1000 epochs).
 - More training with better parameter values and updated network design has to be done for improved image quality.
-##### Saving the image after 100 Epochs
+#### Results:
+#### Generated Image after 100 Epoch:
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Image%20generated%20after%20100%20epochs.%20Using%20CPU.png" title="Generated Image after 100 Epochs" alt="Generated Image after 100 Epochs" />&nbsp;
+  
+##### Saving The Image after 100 Epochs
 <img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Saving%20the%20image%20after%20100%20Epochs.png" title="Image after 100 Epochs" alt="Image after 100 Epochs" />&nbsp;
 
 ### Model Evaluation
