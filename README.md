@@ -125,6 +125,21 @@ These are samples of images generated after `100 epochs`. Clearly, the images ar
 - However, most images have vague shapes of the cat faces. Some have well-defined shapes of the eyes, nose and mouth as well.Training with more number of epochs is required (1000 epochs).
 - More training with better parameter values and updated network design has to be done for improved image quality.
 
+### Observations
+#### Loss Curve:
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Loss%20Over%20Time%20(Generator%20vs%20Discriminator)%20here%20we%20see%20our%20loss%20is%20high.png" title="Loss Over Time" alt="Loss Over Time " />&nbsp;
+- The generator loss is usually high in the beginning as you can see, we have done only 100 epochs here, therefore the loss is high through out he graph.
+- In next phase, will have around 1000 plus epochs and we expect to see gradually reduce in loss and the curve will stabilizes to a steady value as it learns to produce high-quality, realistic data over time. 
+- A well-trained generator can produce hyper-realistic images and fool the discriminator into thinking it is real.
+
+## Phase 2 Mini Project
+### Experiment Setup and Training:
+- The program uses Python 3 as the programming language and is executed in the Google 
+Colaboratory environment over `T4 GPU` for intensive image processing and training support.
+- The file environment is in the interactive mode.
+- The model will be trained for 1000 epochs. Since GANS are computationally very expensive they require more training. Considering the limitations of computational resources available as well as the quality of generation required, 1000 epochs seemed like an ideal trade-off.
+- In caseof higher GPU availability, more epochs would be beneficial in generating higher-quality of images.
+
 ### Model Evaluation
 #### Frechet Inception Distance:
 - Frechet Inception Distance (FID) is one of the most significant Performance evaluation metrics in GANs. 
@@ -137,12 +152,9 @@ These are samples of images generated after `100 epochs`. Clearly, the images ar
 - Inception score analyses images based on both quality and diversity. It uses Kullback-Leibler distance to assess the Quality and entropy to assess the Diversity of generated images.
 - A higher value of inception score indicated better generation with a balance between quality and diversity in generation. However, an image with a good inception score value may not always be realistic in terms of human perception.
 (Yet to be calculated!)
-### Observations
-#### Loss Curve:
-<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Loss%20Over%20Time%20(Generator%20vs%20Discriminator)%20here%20we%20see%20our%20loss%20is%20high.png" title="Loss Over Time" alt="Loss Over Time " />&nbsp;
-- The generator loss is usually high in the beginning as you can see, we have done only 100 epochs here, therefore the loss is high through out he graph.
-- In next phase, will have around 1000 plus epochs and we expect to see gradually reduce in loss and the curve will stabilizes to a steady value as it learns to produce high-quality, realistic data over time. 
-- A well-trained generator can produce hyper-realistic images and fool the discriminator into thinking it is real.
+
+#### Model Deployment
+- To deploy the model to a cloud-based on API, we have to first choose a suitable cloud service like Azure Machine Learning, GCP Ai platform, or AWS SageMaker, followed by which a compute instance has to be made for execution. Setting up the environment with adequate resources, processing units, and dependencies is done at this time.
 
 
 
