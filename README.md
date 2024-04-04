@@ -153,7 +153,7 @@ Colaboratory environment over `T4 GPU` for intensive image processing and traini
 - A higher value of inception score indicated better generation with a balance between quality and diversity in generation. However, an image with a good inception score value may not always be realistic in terms of human perception.
 (Yet to be calculated!)
 
-#### Model Deployment
+### Model Deployment
 - To deploy the model to a cloud-based on API, we have to first choose a suitable cloud service like Azure Machine Learning, GCP Ai platform, or AWS SageMaker, followed by which a compute instance has to be made for execution. Setting up the environment with adequate resources, processing units, and dependencies is done at this time.
 
 
