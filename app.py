@@ -651,7 +651,7 @@ import random
 # Load the generator model
 def load_generator():
   try:
-    gen = tf.keras.models.load_model('gans.h5', custom_objects={'LeakyReLU': tf.keras.layers.LeakyReLU})
+    gen = tf.keras.models.load_model('models/gans.h5', custom_objects={'LeakyReLU': tf.keras.layers.LeakyReLU})
     st.success("Generator model loaded successfully!")
     return gen
   except OSError as e:
@@ -703,7 +703,7 @@ def get_random_image(folder_path):
 # Streamlit app
 def main():
   st.title('GAN Image Generator')
-  st.write('Generate images using a trained generator model')
+  # st.write('Generate images using a trained generator model')
 
   # Load the generator model (handle errors)
   gen = load_generator()
@@ -730,9 +730,9 @@ def main():
     #   st.image(generated_image, caption='Generated Image', use_column_width=True)
 
       # Download button (optional)
-    if st.button('Download Image'):
-       st.download_button("Downlod Image",genIMG,"gentated image")
-        #st.download_button('Download Image', Image.fromarray((generated_image[0]* 255).astype(np.uint8)), 'generated_image.jpg')
+    # if st.button('Download Image'):
+    #    st.download_button("Downlod Image",genIMG,"gentated image")
+    #     #st.download_button('Download Image', Image.fromarray((generated_image[0]* 255).astype(np.uint8)), 'generated_image.jpg')
 
 
 
