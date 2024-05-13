@@ -151,15 +151,21 @@ Colaboratory environment over `T4 GPU` for intensive image processing and traini
 These are samples of images generated after `100 epochs`. Clearly, the images are not realistic. 
 #### Results:
 #### Generated Image after 2000 Epoch:
-<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/output%20after%202000%20epoch.jpeg" title="Generated Image after 100 Epochs" alt="Generated Image after 2000 Epochs" />&nbsp;
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/output%20after%202000%20epoch.jpeg" title="Generated Image after 2000 Epochs" alt="Generated Image after 2000 Epochs" />&nbsp;
 ### Observations
 #### Loss Curve:
 <img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/gen_loss%20and%20des_loss.jpeg" title="Loss Over Time" alt="Loss Over Time " />&nbsp;
 ##### Saving The Image after 2000 Epochs
-<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/final%20output.jpeg" title="Image after 100 Epochs" alt="Image after 100 Epochs" />&nbsp;
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/final%20output.jpeg" title="Image after 2000 Epochs" alt="Image after 2000 Epochs" />&nbsp;
 - Most images have better shapes of the cat faces. Some have well-defined shapes of the eyes, nose and mouth as well.
 - Training with more number of epochs is required and training the generator is also required looking at the gen loss.
 - More training with better parameter values and updated network design has to be done for improved image quality.
+
+## Deployment
+### Deployment over Streamlit
+<img src="img phase2\Deployment.jpeg" title="Deployment over Streamlit">
+
+
 
 ### References
 Our AIML dept. senior [Aditi](https://github.com/aditipraveen), gudied us on this GANs project.
