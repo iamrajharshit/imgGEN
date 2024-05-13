@@ -143,8 +143,26 @@ Colaboratory environment over `T4 GPU` for intensive image processing and traini
 ### Model Deployment
 - To deploy the model to a cloud-based on API, we have to first choose a suitable cloud service like Azure Machine Learning, GCP Ai platform, or AWS SageMaker, followed by which a compute instance has to be made for execution. Setting up the environment with adequate resources, processing units, and dependencies is done at this time.
 
+## Phase 2
+###  GAN (Combined Generator and Discriminator) Summary
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/GAN%20model.jpeg" title="GAN Summary" alt="GAN Summary" />&nbsp;
 
+### Visual Inspection:
+These are samples of images generated after `100 epochs`. Clearly, the images are not realistic. 
+#### Results:
+#### Generated Image after 2000 Epoch:
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/output%20after%202000%20epoch.jpeg" title="Generated Image after 100 Epochs" alt="Generated Image after 2000 Epochs" />&nbsp;
+### Observations
+#### Loss Curve:
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/gen_loss%20and%20des_loss.jpeg" title="Loss Over Time" alt="Loss Over Time " />&nbsp;
+##### Saving The Image after 2000 Epochs
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/final%20output.jpeg" title="Image after 100 Epochs" alt="Image after 100 Epochs" />&nbsp;
+- Most images have better shapes of the cat faces. Some have well-defined shapes of the eyes, nose and mouth as well.
+- Training with more number of epochs is required and training the generator is also required looking at the gen loss.
+- More training with better parameter values and updated network design has to be done for improved image quality.
 
+### References
+Our AIML dept. senior [Aditi](https://github.com/aditipraveen), gudied us on this GANs project.
 
 
 
