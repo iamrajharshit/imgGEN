@@ -86,7 +86,7 @@ The discriminator here resembles a regular Convolutional Neural Network (CNN).
 - Optimizers guide weight updation in the network during backpropagation to ensure the best possible performance and faster convergence.
 Here, we use the Adam optimizer with an initial `learning rate` of 0.001. Adam has an adaptive learning rate which is adjusted for each parameter based on the gradient values. This leads to accuracy in updation and faster convergence.
 ##### Discriminator Summary
-<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Discriminator%20summary.png" title="Discriminator Summary" alt="Discriminator Summary" />&nbsp;
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img/Gans%20(combined%20models)%20summary.png" title="Discriminator Summary" alt="Discriminator Summary" />&nbsp;
 ##### GAN:
 - The GAN architecture is a combination of a `generator` and a `discriminator` network.
 - GANs are excellent generative models that are useful for several applications like text generation, and image generation.
