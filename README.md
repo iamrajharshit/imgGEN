@@ -157,9 +157,12 @@ These are samples of images generated after `100 epochs`. Clearly, the images ar
 <img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/gen_loss%20and%20des_loss.jpeg" title="Loss Over Time" alt="Loss Over Time " />&nbsp;
 ##### Saving The Image after 2000 Epochs
 <img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/final%20output.jpeg" title="Image after 100 Epochs" alt="Image after 100 Epochs" />&nbsp;
-- However, most images have vague shapes of the cat faces. Some have well-defined shapes of the eyes, nose and mouth as well.
+- Most images have better shapes of the cat faces. Some have well-defined shapes of the eyes, nose and mouth as well.
 - Training with more number of epochs is required and training the generator is also required looking at the gen loss.
 - More training with better parameter values and updated network design has to be done for improved image quality.
+
+### References
+Our AIML dept. senior [Aditi](https://github.com/aditipraveen), gudied us on this GANs project.
 
 
 
