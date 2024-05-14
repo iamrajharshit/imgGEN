@@ -167,7 +167,7 @@ These are samples of images generated after `100 epochs`. Clearly, the images ar
 
 ## Deployment
 ### Deployment over Streamlit
-<img src="img phase2\Deployment.jpeg" title="Deployment over Streamlit">
+<img src="https://github.com/iamrajharshit/imgGEN/blob/main/img%20phase2/Deployment.jpeg" title="Deployment over Streamlit">
 
 
 
